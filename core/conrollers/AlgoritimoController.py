@@ -17,19 +17,15 @@ def index(request):
     routes_to_plot = 1
 
 
-    distance_static= static('distances.json')
-    # Leitura de arquivos
-    with open(distance_static, "r") as read_file:
+   # Leitura de arquivos
+    with open(static('../../template/static/distances.json'), "r") as read_file:
         distance = json.load(read_file)
 
-    coordinates_file = static("coordinates.json")
-    with open(coordinates_file, "r") as read_file:
+    with open(static("../../template/static/coordinates.json"), "r") as read_file:
         coordinates = json.load(read_file)
 
-    names_file = static("names.json")
-    with open(names_file, "r") as read_file:
+    with open(static("../../template/static/names.json"), "r") as read_file:
         name = json.load(read_file)
-
     print('Bem vindo ao problema do caixeiro viajante com algoritmo genético!')
 
     # Pega lista de cidades
@@ -63,11 +59,10 @@ def index(request):
     final_cost = model.getFitness()[model.getFittest()]
 
     # Mostra a rota e custo final
-    print(
-        f'\nO melhor indivíduo da geração final faz a rota: {graphics.describeRoute(the_fittest)}\nSeu custo é: {final_cost}\nRota em lista: {the_fittest}')
-    input('\nAperte enter para visualizar o gráfico final')
+    # print(
+    #     f'\nO melhor indivíduo da geração final faz a rota: {graphics.describeRoute(the_fittest)}\nSeu custo é: {final_cost}\nRota em lista: {the_fittest}')
 
     # graphics.display()
-    return JsonResponse({'ok': 'ok'})
+    return JsonResponse({'mensage':  f'\nO melhor indivíduo da geração final faz a rota: {graphics.describeRoute(the_fittest)}\nSeu custo é: {final_cost}\nRota em lista: {the_fittest}'})
 
 
