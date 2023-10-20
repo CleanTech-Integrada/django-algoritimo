@@ -6,6 +6,7 @@ from django.templatetags.static import static
 
 
 def index(request):
+    coords = request.GET.get('coords', '{}')
 
     # Configurações
     population_size = 100
@@ -63,6 +64,6 @@ def index(request):
     #     f'\nO melhor indivíduo da geração final faz a rota: {graphics.describeRoute(the_fittest)}\nSeu custo é: {final_cost}\nRota em lista: {the_fittest}')
 
     # graphics.display()
-    return JsonResponse({'mensage':  f'\nO melhor indivíduo da geração final faz a rota: {graphics.describeRoute(the_fittest)}\nSeu custo é: {final_cost}\nRota em lista: {the_fittest}'})
+    return JsonResponse({'data':  coords})
 
 
