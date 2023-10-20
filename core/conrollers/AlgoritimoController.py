@@ -1,9 +1,11 @@
 from core.services.geneticAlgorithm import PopulationGenerator, NaturalSelection
 from core.services.presentation import Graphics
+from django.http import JsonResponse
 import json
 
 
 def index(request):
+
     # Configurações
     population_size = 100
     mutation_rate = 0.1
@@ -14,11 +16,11 @@ def index(request):
     routes_to_plot = 1
 
     # Leitura de arquivos
-    with open("data/distances.json", "r") as read_file:
+    with open("../../static/distances.json", "r") as read_file:
         distance = json.load(read_file)
-    with open("data/coordinates.json", "r") as read_file:
+    with open("/static/coordinates.json", "r") as read_file:
         coordinates = json.load(read_file)
-    with open("data/names.json", "r") as read_file:
+    with open("/static/names.json", "r") as read_file:
         name = json.load(read_file)
 
     print('Bem vindo ao problema do caixeiro viajante com algoritmo genético!')
@@ -48,7 +50,7 @@ def index(request):
     the_fittest = model.geneticAlgorithm(generations, arena_size, mutation_rate, True)
 
     # Gera o gráfico
-    graphics.generateGraph()
+    # graphics.generateGraph()
 
     # Pega o custo final do modelo
     final_cost = model.getFitness()[model.getFittest()]
@@ -58,7 +60,7 @@ def index(request):
         f'\nO melhor indivíduo da geração final faz a rota: {graphics.describeRoute(the_fittest)}\nSeu custo é: {final_cost}\nRota em lista: {the_fittest}')
     input('\nAperte enter para visualizar o gráfico final')
 
-    graphics.display()
+    # graphics.display()
+    return JsonResponse({'ok': 'ok'})
 
-    return JsonResponse({'ok';
-    'ok'})
+

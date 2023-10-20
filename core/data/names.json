@@ -1,0 +1,12 @@
+{
+    "SP": ["Sao Paulo", "Brasil"],
+    "LIMA": ["Lima", "Peru"],
+    "BOG": ["Bogota", "Colombia"],
+    "RJ": ["Rio de Janeiro", "Brasil"],
+    "SANT": ["Santiago", "Chile"],
+    "CARAC": ["Caracas", "Venezuela"],
+    "BSB": ["Brasilia", "Brasil"],
+    "BA": ["Buenos Aires", "Argentina"],
+    "POA": ["Porto Alegre", "Brasil"],
+    "BH": ["Belo Horizonte", "Brasil"]
+}
