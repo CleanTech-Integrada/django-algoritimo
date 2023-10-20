@@ -2,6 +2,7 @@ from core.services.geneticAlgorithm import PopulationGenerator, NaturalSelection
 from core.services.presentation import Graphics
 from django.http import JsonResponse
 import json
+from django.templatetags.static import static
 
 
 def index(request):
@@ -15,12 +16,18 @@ def index(request):
     generations = 25
     routes_to_plot = 1
 
+
+    distance_static= static('distances.json')
     # Leitura de arquivos
-    with open("../../static/distances.json", "r") as read_file:
+    with open(distance_static, "r") as read_file:
         distance = json.load(read_file)
-    with open("/static/coordinates.json", "r") as read_file:
+
+    coordinates_file = static("coordinates.json")
+    with open(coordinates_file, "r") as read_file:
         coordinates = json.load(read_file)
-    with open("/static/names.json", "r") as read_file:
+
+    names_file = static("names.json")
+    with open(names_file, "r") as read_file:
         name = json.load(read_file)
 
     print('Bem vindo ao problema do caixeiro viajante com algoritmo genético!')
